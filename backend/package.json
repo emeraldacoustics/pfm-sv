@@ -1,0 +1,11 @@
+{
+    "name": "pfm-sv-backend",
+    "version": "1.0.0",
+    "description": "Serverless PFM SV Backend",
+    "author": "",
+    "license": "MIT",
+    "dependencies": {
+      "serverless-python-requirements": "^5.0.0"
+    }
+  }
+  

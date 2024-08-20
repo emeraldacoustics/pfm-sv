@@ -1,0 +1,73 @@
+# "org" ensures this Service is used with the correct Serverless Framework Access Key.
+org: douglasletz56
+# "app" enables Serverless Framework Dashboard features and sharing them with other Services.
+app: pfm-sv-backend
+service: serverless-pfm-sv-api
+
+plugins:
+  - serverless-python-requirements
+
+provider:
+  name: aws
+  runtime: python3.10
+  iam:
+    role:
+      managedPolicies:
+        - "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+
+functions:
+  test:
+    handler: test.test
+    events:
+      - http:
+          path: test
+          method: get
+          cors: true
+  initialize_products:
+    handler: main.initialize_products
+    events:
+      - http:
+          path: initialize/products
+          method: post
+          cors: true
+    timeout: 30
+  initialize_populations:
+    handler: main.initialize_populations
+    events:
+      - http:
+          path: initialize/populations
+          method: post
+          cors: true
+    timeout: 30
+  lookup_products:
+    handler: main.lookup_products
+    events:
+      - http:
+          path: lookup/products
+          method: post
+          cors: true
+    timeout: 30
+  lookup_populations:
+    handler: main.lookup_populations
+    events:
+      - http:
+          path: lookup/populations
+          method: post
+          cors: true
+    timeout: 30
+  update_products:
+    handler: main.update_products
+    events:
+      - http:
+          path: update/products
+          method: post
+          cors: true
+    timeout: 30
+  update_populations:
+    handler: main.update_populations
+    events:
+      - http:
+          path: update/populations
+          method: post
+          cors: true
+    timeout: 30
